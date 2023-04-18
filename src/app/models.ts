@@ -6,11 +6,18 @@ export interface Card {
 
 }
 
+export interface Player {
+    name:string
+    hand:Card[]
+}
+
 const SUIT = ["heart", "clover", "spade", "diamond"]
 const NAMES = ["Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"]
 
 export class DeckOfCards {
+    
     deck: Card[] = []
+
     constructor() {
         for (let i = 0; i < SUIT.length; i++) {
             for (let j = 0; j < NAMES.length; j++) {
@@ -37,7 +44,7 @@ export class DeckOfCards {
         return this.deck.pop()
     }
     private randNum(size = 52): number {
-        return Math.floor((Math.random() * size) + 1)
+        return Math.floor(Math.random() * size)
     }
 }
 

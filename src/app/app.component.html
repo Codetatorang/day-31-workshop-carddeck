@@ -1,6 +1,8 @@
 <h2>Deck of Cards</h2>
 
-<app-deck-of-card-component (onCardSelection)="newCard($event)"></app-deck-of-card-component>
+<h2>Current Player: {{ currentPlayer }}</h2>
 
-<app-player-component *ngFor="let n of players"
-  [name]="n" [hand]="playerHand"></app-player-component>
+<app-deck-of-card-component (onCardSelection)="newCard()" [remainingCards] ="deckOfCards.deck.length"></app-deck-of-card-component>
+
+<app-player-component *ngFor="let p of players"
+  (onDrawCard)="drawCardForPlayer($event)" [player]="p"></app-player-component>

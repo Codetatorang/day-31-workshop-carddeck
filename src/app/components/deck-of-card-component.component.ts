@@ -12,18 +12,19 @@ export class DeckOfCardComponentComponent {
 
   cards:DeckOfCards
 
+  @Input()
+  remainingCards = 0
+
   @Output()
-  onCardSelection = new Subject<Card | undefined>()
+  onCardSelection = new Subject<void>()
 
   constructor(){
-    this.cards = new DeckOfCards
+    this.cards = new DeckOfCards()
     this.cards.shuffle()
   }
 
   take(){
-    const c = this.cards.take()
-    console.info('>>> taken' , c)
-    this.onCardSelection.next(c)
+    this.onCardSelection.next()
   }
 
 }
